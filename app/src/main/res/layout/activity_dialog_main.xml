@@ -12,4 +12,10 @@
         android:layout_height="wrap_content"
         android:onClick="onChooseImgClick"
         android:text="选择图片" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onScaleImageClick"
+        android:text="scaleImage" />
 </LinearLayout>

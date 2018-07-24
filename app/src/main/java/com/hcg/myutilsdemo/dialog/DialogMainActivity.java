@@ -7,6 +7,8 @@ import android.widget.Toast;
 
 import com.hcg.myutilsdemo.R;
 import com.hcg.myutilslibrary.dialog.RxDialogChooseImage;
+import com.hcg.myutilslibrary.dialog.RxDialogScaleView;
+import com.hcg.myutilslibrary.view.scaleimage.RxScaleImageView;
 
 public class DialogMainActivity extends AppCompatActivity {
 
@@ -33,6 +35,11 @@ public class DialogMainActivity extends AppCompatActivity {
                                 .show();
                     }
                 })
+                .show();
+    }
+
+    public void onScaleImageClick(View view) {
+        new RxDialogScaleView(this, R.mipmap.ic_launcher, true)
                 .show();
     }
 }

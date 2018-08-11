@@ -18,4 +18,9 @@
         android:layout_height="wrap_content"
         android:onClick="onDialogClick"
         android:text="对话框" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onExpandTextViewClick"
+        android:text="展开伸缩textView" />
 </LinearLayout>

@@ -23,4 +23,8 @@ public class MainActivity extends AppCompatActivity {
     public void onDialogClick(View view) {
         startActivity(new Intent(this, DialogMainActivity.class));
     }
+
+    public void onExpandTextViewClick(View view) {
+//        startActivity(new Intent(this, ExpandTextViewActivity.class));
+    }
 }

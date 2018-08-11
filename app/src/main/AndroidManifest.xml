@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CustomKeyboard.CustomKeyboardActivity" />
-        <activity android:name=".dialog.DialogMainActivity"></activity>
+        <activity android:name=".dialog.DialogMainActivity" />
     </application>
 
 </manifest>

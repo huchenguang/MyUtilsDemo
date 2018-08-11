@@ -1,11 +1,13 @@
 # MyUtilsDemo
 自己用的工具类
-```allprojects {
+```
+allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
-	}```<br/>
-```dependencies {
+	}
+dependencies {
 	        implementation 'com.github.huchenguang:MyUtilsDemo:1.0.2'
-	}```
+	}
+```

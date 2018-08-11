@@ -7,13 +7,14 @@ import android.view.View;
 
 import com.hcg.myutilsdemo.CustomKeyboard.CustomKeyboardActivity;
 import com.hcg.myutilsdemo.dialog.DialogMainActivity;
+import com.hcg.myutilslibrary.widget.TipLoadDialog;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         setContentView(R.layout.activity_main);
     }
 
@@ -26,6 +27,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onExpandTextViewClick(View view) {
-//        startActivity(new Intent(this, ExpandTextViewActivity.class));
+        new TipLoadDialog(this).setMsgAndType("加载成功", TipLoadDialog.ICON_TYPE_SUCCESS).show();
     }
 }

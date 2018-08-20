@@ -7,11 +7,21 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
+    <com.hcg.myutilslibrary.widget.CommonShapeButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="11dp"
+        android:layout_marginRight="11dp"
+        android:layout_marginTop="11dp"
+        android:drawableRight="@mipmap/ic_launcher"
         android:onClick="OnCustomKeyboardClick"
-        android:text="自定义键盘" />
+        android:paddingBottom="11dp"
+        android:paddingTop="11dp"
+        android:text="自定义键盘"
+        app:csb_activeEnable="true"
+        app:csb_cornerRadius="6dp"
+        app:csb_drawablePosition="right"
+        app:csb_fillColor="#f7642c" />
 
     <Button
         android:layout_width="match_parent"

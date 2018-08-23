@@ -8,6 +8,7 @@ allprojects {
 		}
 	}
 dependencies {
-	        implementation 'com.github.huchenguang:MyUtilsDemo:1.0.2'
+	        implementation 'com.github.huchenguang:MyUtilsDemo:1.0.3'
+		implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.61"
 	}
 ```

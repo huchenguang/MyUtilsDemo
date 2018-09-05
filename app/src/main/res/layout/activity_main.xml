@@ -34,4 +34,14 @@
         android:layout_height="wrap_content"
         android:onClick="onExpandTextViewClick"
         android:text="提示对话框" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/qmui_s_list_item_bg_with_border_double"
+        android:clickable="true"
+        android:gravity="center"
+        android:paddingBottom="11dp"
+        android:paddingTop="11dp"
+        android:text="背景drawable" />
 </LinearLayout>

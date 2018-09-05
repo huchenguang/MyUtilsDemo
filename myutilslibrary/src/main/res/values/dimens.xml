@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="qmui_list_item_inset_left">16dp</dimen>
+    <dimen name="qmui_list_divider_height">1px</dimen>
+    <dimen name="qmui_list_divider_height_negative">-1px</dimen>
+    <dimen name="qmui_group_list_section_header_footer_text_size">13sp</dimen>
+</resources>

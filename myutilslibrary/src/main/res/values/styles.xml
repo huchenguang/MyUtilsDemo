@@ -20,4 +20,10 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
+    <!--********************* Loading *********************-->
+    <style name="Loading">
+        <item name="qmui_loading_view_size">?attr/qmui_loading_size</item>
+        <item name="android:color">?attr/qmui_loading_color</item>
+    </style>
 </resources>

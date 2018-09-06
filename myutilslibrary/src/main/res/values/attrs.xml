@@ -49,4 +49,13 @@
             <enum name="LEFT_RIGHT" value="1" />
         </attr>
     </declare-styleable>
+
+    <!--************ QMUILoading ***********-->
+    <attr name="qmui_loading_size" format="dimension" />
+    <attr name="qmui_loading_color" format="color" />
+    <attr name="QMUILoadingStyle" format="reference" />
+    <declare-styleable name="QMUILoadingView">
+        <attr name="qmui_loading_view_size" format="dimension" />
+        <attr name="android:color" />
+    </declare-styleable>
 </resources>

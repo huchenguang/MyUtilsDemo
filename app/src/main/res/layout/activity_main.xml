@@ -7,6 +7,25 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f00"
+        android:gravity="center_vertical"
+        android:paddingBottom="11dp"
+        android:paddingTop="11dp">
+
+        <com.hcg.myutilslibrary.widget.AlphaImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/icon_back" />
+
+        <com.hcg.myutilslibrary.widget.QMUILoadingView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:qmui_loading_view_size="20dp" />
+    </LinearLayout>
+
     <com.hcg.myutilslibrary.widget.CommonShapeButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

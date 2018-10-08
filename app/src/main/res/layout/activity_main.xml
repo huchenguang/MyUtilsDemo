@@ -63,4 +63,24 @@
         android:paddingBottom="11dp"
         android:paddingTop="11dp"
         android:text="背景drawable" />
+
+    <com.hcg.myutilslibrary.widget.CommonShapeButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onOkClick"
+        android:padding="11dp"
+        android:text="确定对话框" />
+
+    <com.hcg.myutilslibrary.widget.CommonShapeButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onPermissionRequest"
+        android:padding="11dp"
+        android:text="请求权限" />
+    <com.hcg.myutilslibrary.widget.CommonShapeButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onInstallApk"
+        android:padding="11dp"
+        android:text="安装apk" />
 </LinearLayout>

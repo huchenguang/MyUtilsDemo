@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnCustomKeyboardClick(View view) {
+        
         startActivity(new Intent(this, CustomKeyboardActivity.class));
     }
 

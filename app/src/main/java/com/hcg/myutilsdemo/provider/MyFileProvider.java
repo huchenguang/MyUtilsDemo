@@ -1,4 +1,4 @@
-package com.hcg.myutilslibrary.provider;
+package com.hcg.myutilsdemo.provider;
 
 import android.support.v4.content.FileProvider;
 

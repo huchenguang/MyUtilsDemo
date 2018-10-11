@@ -10,7 +10,7 @@ import android.support.v4.content.FileProvider;
 import java.io.File;
 
 public class InstallUtils {
-    public static void installApk(Activity context, File file) {
+    public static void installApk(Activity context, File file, String providerClassName) {
        /* startAnotherActivity(MainActivity.class);
         finish();*/
         File apkFile = file;
@@ -20,7 +20,7 @@ public class InstallUtils {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             Uri contentUri = FileProvider.getUriForFile(context
-                    , "com.hcg.myutilslibrary.provider.MyFileProvider"
+                    , providerClassName
                     , apkFile);
             intent.setDataAndType(contentUri, "application/vnd.android" +
                     ".package-archive");

@@ -57,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onInstallApk(View v) {
         InstallUtils.installApk(this, new File(Environment.getExternalStorageDirectory()
-                .getAbsolutePath() + "/" + "android.apk"));
+                .getAbsolutePath() + "/" + "android.apk"), "com.hcg.myutilsdemo.provider" +
+                ".MyFileProvider");
     }
 
 }

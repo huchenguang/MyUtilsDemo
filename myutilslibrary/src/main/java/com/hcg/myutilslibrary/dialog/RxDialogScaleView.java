@@ -1,12 +1,16 @@
 package com.hcg.myutilslibrary.dialog;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.hcg.myutilslibrary.R;
 import com.hcg.myutilslibrary.view.scaleimage.ImageSource;
@@ -19,13 +23,15 @@ import com.hcg.myutilslibrary.view.scaleimage.RxScaleImageView;
  */
 public class RxDialogScaleView extends RxDialog {
 
-    private RxScaleImageView mRxScaleImageView;
+    public RxScaleImageView mRxScaleImageView;
     private String filePath;
     private Uri fileUri;
     private String fileAssetName;
     private Bitmap fileBitmap;
     private int resId;
     private int maxScale = 100;
+    public TextView tvRemark;
+    public View rootView;
 
     public RxDialogScaleView(Context context) {
         super(context);
@@ -41,7 +47,7 @@ public class RxDialogScaleView extends RxDialog {
     public RxDialogScaleView(Context context, String filePath, boolean isAssets) {
         super(context);
         initView();
-        setImage(filePath,isAssets);
+        setImage(filePath, isAssets);
     }
 
     public RxDialogScaleView(Context context, Uri uri) {
@@ -84,11 +90,11 @@ public class RxDialogScaleView extends RxDialog {
         return mRxScaleImageView;
     }
 
-    public void setImage(String filePath,boolean isAssets) {
+    public void setImage(String filePath, boolean isAssets) {
         if (isAssets) {
             this.fileAssetName = fileAssetName;
             mRxScaleImageView.setImage(ImageSource.asset(filePath));
-        }else {
+        } else {
             this.filePath = filePath;
             mRxScaleImageView.setImage(ImageSource.uri(filePath));
         }
@@ -110,18 +116,61 @@ public class RxDialogScaleView extends RxDialog {
     }
 
     private void initView() {
-        View dialogView = LayoutInflater.from(mContext).inflate(R.layout.dialog_scaleview, null);
-        mRxScaleImageView = dialogView.findViewById(R.id.rx_scale_view);
+        rootView = LayoutInflater.from(mContext).inflate(R.layout.dialog_scaleview, null);
+        mRxScaleImageView = rootView.findViewById(R.id.rx_scale_view);
+        tvRemark = rootView.findViewById(R.id.tv_remark);
         mRxScaleImageView.setMaxScale(maxScale);
-        ImageView ivClose =  dialogView.findViewById(R.id.iv_close);
+        ImageView ivClose = rootView.findViewById(R.id.iv_close);
         ivClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cancel();
             }
         });
+        mRxScaleImageView.setOnClickListener(view -> {
+            toggle();
+        });
         setFullScreen();
-        setContentView(dialogView);
+        setContentView(rootView);
+    }
+
+    public void setRemarkContent(String remark) {
+        tvRemark.setText(remark);
+    }
+
+    private boolean canClick = true;
+
+    private void toggle() {
+        if (canClick) {
+            canClick = false;
+            if (tvRemark.getVisibility() == View.VISIBLE) {
+                tvRemark.setAlpha(1f);
+                ViewPropertyAnimator animator = tvRemark.animate().alpha(0f).setDuration
+                        (300);
+                animator.setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        tvRemark.setVisibility(View.INVISIBLE);
+                        canClick = true;
+                    }
+                });
+            } else {
+                tvRemark.setVisibility(View.VISIBLE);
+                tvRemark.setAlpha(0f);
+                ViewPropertyAnimator animator = tvRemark.animate().alpha(1f).setDuration
+                        (300);
+                animator.setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        tvRemark.setVisibility(View.VISIBLE);
+                        canClick = true;
+                    }
+                });
+            }
+        }
+
     }
 
     public int getMaxScale() {

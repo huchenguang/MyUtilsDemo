@@ -212,7 +212,7 @@ class CommonShapeButton @JvmOverloads constructor(
                     // 图片间距
                     val drawablePadding = compoundDrawablePadding
                     when (mDrawablePosition) {
-                    // 左右drawable
+                        // 左右drawable
                         0, 2 -> {
                             // 图片宽度
                             val drawableWidth = it.intrinsicWidth
@@ -224,7 +224,7 @@ class CommonShapeButton @JvmOverloads constructor(
                             // 图片和文字全部靠在左侧
                             setPadding(0, 0, rightPadding, 0)
                         }
-                    // 上下drawable
+                        // 上下drawable
                         1, 3 -> {
                             // 图片高度
                             val drawableHeight = it.intrinsicHeight
@@ -331,5 +331,11 @@ class CommonShapeButton @JvmOverloads constructor(
      */
     private fun containsFlag(flagSet: Int, flag: Int): Boolean {
         return flagSet or flag == flagSet
+    }
+
+    //add
+    public fun setFillColorBg(color: Int) {
+        mFillColor = color;
+        requestLayout();
     }
 }

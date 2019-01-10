@@ -33,7 +33,7 @@ public class RxDialogScaleView2 extends RxDialog {
     private int maxScale = 100;
     public TextView tvRemark;
     public View rootView;
-    private ImageView ivRotate;
+    public ImageView ivRotate;
 
     public RxDialogScaleView2(Context context) {
         super(context);

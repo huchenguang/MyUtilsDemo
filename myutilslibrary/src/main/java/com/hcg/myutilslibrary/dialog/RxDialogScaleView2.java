@@ -6,7 +6,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
@@ -14,8 +16,6 @@ import android.widget.TextView;
 
 import com.hcg.myutilslibrary.R;
 import com.hcg.myutilslibrary.view.photoview.PhotoView;
-import com.hcg.myutilslibrary.view.scaleimage.ImageSource;
-import com.hcg.myutilslibrary.view.scaleimage.RxScaleImageView;
 
 /**
  * @author vondear
@@ -102,6 +102,8 @@ public class RxDialogScaleView2 extends RxDialog {
         mRxScaleImageView.setImageBitmap(bitmap);
     }
 
+    private int screenType = 0;
+
     private void initView() {
         rootView = LayoutInflater.from(mContext).inflate(R.layout.dialog_scaleview2, null);
         mRxScaleImageView = rootView.findViewById(R.id.photo_view);
@@ -110,6 +112,10 @@ public class RxDialogScaleView2 extends RxDialog {
         ivRotate = rootView.findViewById(R.id.iv_rotate);
         ivClose.setOnClickListener(view -> cancel());
         ivRotate.setOnClickListener(v -> {
+            if (myOrientationListener != null) {
+                return;
+            }
+            screenType++;
             mRxScaleImageView.setRotationBy(90);
         });
         mRxScaleImageView.setOnClickListener(v -> toggle());
@@ -118,7 +124,58 @@ public class RxDialogScaleView2 extends RxDialog {
     }
 
     public void setRemarkContent(String remark) {
-        tvRemark.setText(remark);
+        if (TextUtils.isEmpty(remark)) {
+            tvRemark.setVisibility(View.INVISIBLE);
+        } else {
+            tvRemark.setVisibility(View.VISIBLE);
+            tvRemark.setText(remark);
+        }
+    }
+
+    private MyOrientationListener myOrientationListener;
+
+    public void setCanScreenAutoChange() {
+        ivRotate.setVisibility(View.GONE);
+        if (myOrientationListener == null) {
+            myOrientationListener = new MyOrientationListener(mContext);
+            myOrientationListener.enable();
+        }
+    }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        myOrientationListener.disable();
+        myOrientationListener = null;
+
+    }
+
+    class MyOrientationListener extends OrientationEventListener {
+
+        public MyOrientationListener(Context context) {
+            super(context);
+        }
+
+        public MyOrientationListener(Context context, int rate) {
+            super(context, rate);
+        }
+
+        @Override
+        public void onOrientationChanged(int orientation) {
+            if (((orientation >= 0) && (orientation < 45)) || (orientation > 315)) {//设置竖屏
+                screenType = 0;
+                mRxScaleImageView.setRotation(0);
+            } else if (orientation > 225 && orientation < 315) { //设置横屏
+                screenType = 1;
+                mRxScaleImageView.setRotation(90);
+            } else if (orientation > 45 && orientation < 135) {// 设置反向横屏
+                screenType = 2;
+                mRxScaleImageView.setRotation(270);
+            } else if (orientation > 135 && orientation < 225) {//反向竖屏
+                screenType = 3;
+                mRxScaleImageView.setRotation(180);
+            }
+        }
     }
 
     private boolean canClick = true;

@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/black"
     android:orientation="vertical">
 
@@ -44,7 +45,7 @@
         android:ellipsize="end"
         android:lineSpacingMultiplier="1.2"
         android:maxLines="3"
-        android:text="         备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注"
+        tools:text="         备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注"
         android:textColor="#eeeeee"
         android:textSize="13sp"
         android:visibility="visible" />

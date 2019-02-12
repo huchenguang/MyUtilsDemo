@@ -40,7 +40,10 @@ public class DialogMainActivity extends AppCompatActivity {
     }
 
     public void onScaleImageClick(View view) {
-        new RxDialogScaleView2(this, R.mipmap.ic_launcher, true)
-                .show();
+        RxDialogScaleView2 dlg = new RxDialogScaleView2(this, R.mipmap
+                .ic_launcher, true);
+        dlg.setRemarkContent("这是备注");
+        dlg.setCanScreenAutoChange();
+        dlg.show();
     }
 }

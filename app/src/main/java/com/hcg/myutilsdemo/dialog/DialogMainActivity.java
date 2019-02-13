@@ -41,7 +41,7 @@ public class DialogMainActivity extends AppCompatActivity {
 
     public void onScaleImageClick(View view) {
         RxDialogScaleView2 dlg = new RxDialogScaleView2(this, R.mipmap
-                .ic_launcher, true);
+                .icon_img, true);
         dlg.setRemarkContent("这是备注");
         dlg.setCanScreenAutoChange();
         dlg.show();

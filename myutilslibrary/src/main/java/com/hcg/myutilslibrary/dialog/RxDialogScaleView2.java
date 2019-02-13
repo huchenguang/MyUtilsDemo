@@ -164,6 +164,7 @@ public class RxDialogScaleView2 extends RxDialog {
         public void onOrientationChanged(int orientation) {
             if (((orientation >= 0) && (orientation < 45)) || (orientation > 315)) {//设置竖屏
                 screenType = 0;
+                
                 mRxScaleImageView.setRotationTo(0);
             } else if (orientation > 225 && orientation < 315) { //设置横屏
                 screenType = 1;

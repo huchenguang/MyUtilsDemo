@@ -20,17 +20,18 @@ import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.View;
 import android.widget.ImageView;
+
+
 /**
  * A zoomable ImageView. See {@link PhotoViewAttacher} for most of the details on how the zooming
  * is accomplished
  */
 @SuppressWarnings("unused")
-public class PhotoView extends AppCompatImageView {
+public class PhotoView extends ImageView {
 
     private PhotoViewAttacher attacher;
     private ImageView.ScaleType pendingScaleType;

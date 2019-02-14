@@ -115,7 +115,7 @@ public class RxDialogScaleView2 extends RxDialog {
             if (myOrientationListener != null) {
                 return;
             }
-            screenType++;
+            screenType = ++screenType % 4;
             mRxScaleImageView.setRotationBy(90);
         });
         mRxScaleImageView.setOnClickListener(v -> toggle());
@@ -162,21 +162,23 @@ public class RxDialogScaleView2 extends RxDialog {
 
         @Override
         public void onOrientationChanged(int orientation) {
+            int currScreenType = 0;
             if (((orientation >= 0) && (orientation < 45)) || (orientation > 315)) {//设置竖屏
-                screenType = 0;
-                
-                mRxScaleImageView.setRotationTo(0);
+                currScreenType = 0;
             } else if (orientation > 225 && orientation < 315) { //设置横屏
-                screenType = 1;
-                mRxScaleImageView.setRotationTo(90);
+                currScreenType = 1;
             } else if (orientation > 45 && orientation < 135) {// 设置反向横屏
-                screenType = 2;
-                mRxScaleImageView.setRotationTo(270);
+                currScreenType = 3;
             } else if (orientation > 135 && orientation < 225) {//反向竖屏
-                screenType = 3;
-                mRxScaleImageView.setRotationTo(180);
+                currScreenType = 2;
             }
+            if (screenType == currScreenType || mRxScaleImageView.getScale() != 1f) {
+                return;
+            }
+            screenType = currScreenType;
+            mRxScaleImageView.setRotationTo(90 * screenType);
         }
+
     }
 
     private boolean canClick = true;
